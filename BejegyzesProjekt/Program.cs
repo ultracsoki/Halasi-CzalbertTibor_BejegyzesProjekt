@@ -15,8 +15,12 @@ namespace BejegyzesProjekt
         {
             //Halasi-Czalbert Tibor
 
-            BekertListaFeltoltese();
-            BeolvasottListaFeltoltese();
+            Bejegyzes bejegyzes1 = new Bejegyzes("Tibi","Kész vagyok");
+            Bejegyzes bejegyzes2 = new Bejegyzes("Tanár","Ügyes vagy");
+            bejegyzesek.Add(bejegyzes1);
+            bejegyzesek.Add(bejegyzes2);
+            BekertElemekFeltoltese();
+            BeolvasottElemekFeltoltese();
             LikeokKiosztasa();
             TartalomModositasa();
             Console.WriteLine("\n---------------------------------------------\n");
@@ -33,7 +37,7 @@ namespace BejegyzesProjekt
             Console.ReadKey();
         }
 
-        static void BekertListaFeltoltese()
+        static void BekertElemekFeltoltese()
         {
             Console.WriteLine("Hány darab bejegyzést szeretne felvenni?");
             int darabSzam = 0;
@@ -58,7 +62,7 @@ namespace BejegyzesProjekt
         }
 
 
-        static void BeolvasottListaFeltoltese()
+        static void BeolvasottElemekFeltoltese()
         {
             StreamReader sr = new StreamReader("bejegyzesek.csv");
             while (!sr.EndOfStream)
