@@ -22,16 +22,16 @@ namespace BejegyzesProjekt
             this.Szerkesztve = DateTime.Now;
         }
 
-        public string Szerzo { get; }
-        public string Tartalom { get; }
+        public string Szerzo { get => szerzo; set => szerzo = value; }
+        public string Tartalom { get => tartalom; set => tartalom = value; }
         public void SetTartalom(string tartalom)
         {
             szerkesztve = DateTime.Now;
             this.tartalom = tartalom;
         }
-        public int Likeok { get; }
-        public DateTime Letrejott { get; }
-        public DateTime Szerkesztve { get; }
+        public int Likeok { get => likeok; set => likeok = value; }
+        public DateTime Letrejott { get => letrejott; set => letrejott = value; }
+        public DateTime Szerkesztve { get => szerkesztve; set => szerkesztve = value; }
 
         public void Like()
         {
