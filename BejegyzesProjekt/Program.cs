@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO;
+using System.Web;
 
 namespace BejegyzesProjekt
 {
@@ -24,6 +25,9 @@ namespace BejegyzesProjekt
             LegnepszerubbBejegyzes();
             TobbLikeMint35();
             KevesebbMint15();
+            ListaRendezese();
+            Console.WriteLine("\n---------------------------------------------\n");
+            BejegyzesekKiiratas();
 
             Console.ReadKey();
         }
@@ -137,6 +141,15 @@ namespace BejegyzesProjekt
             Console.WriteLine($"{szamlalo} darab 15-nél kevesebb likeot kapott bejegyzés van.");
         }
 
-
+        static void ListaRendezese()
+        {
+            bejegyzesek.Sort(
+            delegate (Bejegyzes p1, Bejegyzes p2)
+               {
+                    return p1.Likeok.CompareTo(p2.Likeok);
+               }
+            );
+            bejegyzesek.Reverse();
+        }
     }
 }
