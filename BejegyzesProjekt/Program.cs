@@ -21,6 +21,8 @@ namespace BejegyzesProjekt
             TartalomModositasa();
             BejegyzesekBekertKiiratas();
             BejegyzesekBeolvasottKiiratas();
+            Console.WriteLine("\n---------------------------------------------\n");
+            LegnepszerubbBejegyzes();
 
             Console.ReadKey();
         }
@@ -99,6 +101,19 @@ namespace BejegyzesProjekt
             Console.Write("Adjon meg egy szöveget!: ");
             string szoveg = Console.ReadLine();
             bejegyzesekBeolvasas[1].SetTartalom(szoveg);
+        }
+
+        static void LegnepszerubbBejegyzes()
+        {
+            int max = bejegyzesekBeolvasas[0].Likeok;
+            for (int i = 1; i < bejegyzesekBeolvasas.Count; i++)
+            {
+                if (bejegyzesekBeolvasas[i].Likeok > max)
+                {
+                    max = bejegyzesekBeolvasas[i].Likeok;
+                }
+            }
+            Console.WriteLine($"A legnépszerűbb bejegyzésen {max} darab like van.");
         }
     }
 }
