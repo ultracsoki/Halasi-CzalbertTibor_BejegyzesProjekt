@@ -28,6 +28,7 @@ namespace BejegyzesProjekt
             ListaRendezese();
             Console.WriteLine("\n---------------------------------------------\n");
             BejegyzesekKiiratas();
+            RendezettListaFajlbaIrasa();
 
             Console.ReadKey();
         }
@@ -150,6 +151,16 @@ namespace BejegyzesProjekt
                }
             );
             bejegyzesek.Reverse();
+        }
+
+        static void RendezettListaFajlbaIrasa()
+        {
+            StreamWriter sw = new StreamWriter("bejegyzesek_rendezett.txt");
+            foreach (var item in bejegyzesek)
+            {
+                sw.WriteLine(item);
+            }
+            sw.Close();
         }
     }
 }
