@@ -16,12 +16,11 @@ namespace BejegyzesProjekt
             //Halasi-Czalbert Tibor
 
             BekertListaFeltoltese();
-            BejegyzesekBekertKiiratas();
-            Console.WriteLine("\n------------------------------------------\n");
             BeolvasottListaFeltoltese();
-            BejegyzesekBeolvasottKiiratas();
-            Console.WriteLine("\n------------------------------------------\n");
             LikeokKiosztasa();
+            TartalomModositasa();
+            BejegyzesekBekertKiiratas();
+            BejegyzesekBeolvasottKiiratas();
 
             Console.ReadKey();
         }
@@ -93,6 +92,13 @@ namespace BejegyzesProjekt
                 int randomNumber = rand.Next(0, bejegyzesekBeolvasas.Count);
                 bejegyzesekBeolvasas[randomNumber].Like();
             }
+        }
+
+        static void TartalomModositasa()
+        {
+            Console.Write("Adjon meg egy szöveget!: ");
+            string szoveg = Console.ReadLine();
+            bejegyzesekBeolvasas[1].SetTartalom(szoveg);
         }
     }
 }
