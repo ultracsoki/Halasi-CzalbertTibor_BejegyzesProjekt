@@ -18,9 +18,11 @@ namespace BejegyzesProjekt
             BeolvasottListaFeltoltese();
             LikeokKiosztasa();
             TartalomModositasa();
+            Console.WriteLine("\n---------------------------------------------\n");
             BejegyzesekKiiratas();
             Console.WriteLine("\n---------------------------------------------\n");
             LegnepszerubbBejegyzes();
+            TobbLikeMint35();
 
             Console.ReadKey();
         }
@@ -101,12 +103,29 @@ namespace BejegyzesProjekt
             Console.WriteLine($"A legnépszerűbb bejegyzésen {max} darab like van.");
         }
 
-        //static void TobbLikeMint35()
-        //{
-        //    for (int i = 0; i < 10; i++)
-        //    {
+        static void TobbLikeMint35()
+        {
+            bool vanE = false;
+            for (int i = 0; i < bejegyzesek.Count; i++)
+            {
+                if (bejegyzesek[i].Likeok > 35)
+                {
+                    vanE = true;
+                }
+            }
+            if (vanE == true)
+            {
+                Console.WriteLine("Van olyan bejegyzés, amely 35-nél több likeot kapott.");
+            }
+            else
+            {
+                Console.WriteLine("Nincs olyan bejegyzés, amely 35-nél több likeot kapott.");
+            }
+        }
 
-        //    }
+        //static void KevesebbMint15()
+        //{
+
         //}
     }
 }
