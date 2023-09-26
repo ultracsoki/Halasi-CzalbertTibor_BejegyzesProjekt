@@ -15,11 +15,28 @@ namespace BejegyzesProjekt
         private DateTime szerkesztve;
         public Bejegyzes(string szerzo, string tartalom)
         {
-            this.szerzo = szerzo;
-            this.tartalom = tartalom;
-            this.likeok = 0;
-            this.letrejott = DateTime.Now;
-            this.szerkesztve = DateTime.Now;
+            this.Szerzo = szerzo;
+            this.Tartalom = tartalom;
+            this.Likeok = 0;
+            this.Letrejott = DateTime.Now;
+            this.Szerkesztve = DateTime.Now;
         }
+
+        public string Szerzo { get; }
+        public string Tartalom { get; }
+        public void SetTartalom(string tartalom)
+        {
+            szerkesztve = DateTime.Now;
+            this.tartalom = tartalom;
+        }
+        public int Likeok { get; }
+        public DateTime Letrejott { get; }
+        public DateTime Szerkesztve { get; }
+
+        public void Like()
+        {
+            this.likeok++;
+        }
+
     }
 }
