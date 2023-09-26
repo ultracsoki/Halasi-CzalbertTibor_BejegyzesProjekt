@@ -37,6 +37,17 @@ namespace BejegyzesProjekt
         {
             this.likeok++;
         }
+        public override string ToString()
+        {
+            if (this.szerkesztve != this.letrejott)
+            {
+                return $"{this.szerzo} - {this.likeok} - {this.letrejott}\nSzerkesztve: {this.szerkesztve}\n{this.tartalom}";
+            }
+            else
+            {
+                return $"{this.szerzo} - {this.likeok} - {this.letrejott}\n{this.tartalom}";
+            }
+        }
 
     }
 }
