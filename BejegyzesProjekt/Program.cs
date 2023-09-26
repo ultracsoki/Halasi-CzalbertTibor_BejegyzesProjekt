@@ -20,6 +20,8 @@ namespace BejegyzesProjekt
             Console.WriteLine("\n------------------------------------------\n");
             BeolvasottListaFeltoltese();
             BejegyzesekBeolvasottKiiratas();
+            Console.WriteLine("\n------------------------------------------\n");
+            LikeokKiosztasa();
 
             Console.ReadKey();
         }
@@ -69,11 +71,27 @@ namespace BejegyzesProjekt
             sr.Close();
         }
 
-        static public void BejegyzesekBeolvasottKiiratas()
+        static void BejegyzesekBeolvasottKiiratas()
         {
             foreach (var item in bejegyzesekBeolvasas)
             {
                 Console.WriteLine(item);
+            }
+        }
+
+        static void LikeokKiosztasa()
+        {
+            Random rand = new Random();
+            for (int i = 0; i < bejegyzesekBekert.Count*20; i++)
+            {
+                int randomNumber = rand.Next(0,bejegyzesekBekert.Count);
+                bejegyzesekBekert[randomNumber].Like();
+            }
+
+            for (int i = 0; i < bejegyzesekBeolvasas.Count * 20; i++)
+            {
+                int randomNumber = rand.Next(0, bejegyzesekBeolvasas.Count);
+                bejegyzesekBeolvasas[randomNumber].Like();
             }
         }
     }
