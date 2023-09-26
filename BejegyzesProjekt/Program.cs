@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 
 namespace BejegyzesProjekt
 {
@@ -16,11 +17,14 @@ namespace BejegyzesProjekt
 
             BekertListaFeltoltese();
             BejegyzesekBekertKiiratas();
+            Console.WriteLine("\n------------------------------------------\n");
+            BeolvasottListaFeltoltese();
+            BejegyzesekBeolvasottKiiratas();
 
             Console.ReadKey();
         }
 
-        static public void BekertListaFeltoltese()
+        static void BekertListaFeltoltese()
         {
             Console.WriteLine("Hány darab bejegyzést szeretne felvenni?");
             int darabSzam = 0;
@@ -44,11 +48,32 @@ namespace BejegyzesProjekt
             }
         }
 
-        static public void BejegyzesekBekertKiiratas()
+        static void BejegyzesekBekertKiiratas()
         {
             foreach (var item in bejegyzesekBekert)
             {
                 Console.WriteLine(item.ToString());
+            }
+        }
+
+        static void BeolvasottListaFeltoltese()
+        {
+            StreamReader sr = new StreamReader("bejegyzesek.csv");
+            while (!sr.EndOfStream)
+            {
+                string sor = sr.ReadLine();
+                string[] darabok = sor.Split(';');
+                Bejegyzes bejegyzes = new Bejegyzes(darabok[0], darabok[1]);
+                bejegyzesekBeolvasas.Add(bejegyzes);
+            }
+            sr.Close();
+        }
+
+        static public void BejegyzesekBeolvasottKiiratas()
+        {
+            foreach (var item in bejegyzesekBeolvasas)
+            {
+                Console.WriteLine(item);
             }
         }
     }
