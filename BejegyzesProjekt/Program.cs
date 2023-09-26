@@ -9,8 +9,7 @@ namespace BejegyzesProjekt
 {
     internal class Program
     {
-        static List<Bejegyzes> bejegyzesekBekert = new List<Bejegyzes>();
-        static List<Bejegyzes> bejegyzesekBeolvasas = new List<Bejegyzes>();
+        static List<Bejegyzes> bejegyzesek = new List<Bejegyzes>();
         static void Main(string[] args)
         {
             //Halasi-Czalbert Tibor
@@ -19,8 +18,7 @@ namespace BejegyzesProjekt
             BeolvasottListaFeltoltese();
             LikeokKiosztasa();
             TartalomModositasa();
-            BejegyzesekBekertKiiratas();
-            BejegyzesekBeolvasottKiiratas();
+            BejegyzesekKiiratas();
             Console.WriteLine("\n---------------------------------------------\n");
             LegnepszerubbBejegyzes();
 
@@ -47,17 +45,10 @@ namespace BejegyzesProjekt
                 Console.Write("Tartalom:  ");
                 string tartalom = Console.ReadLine();
                 Bejegyzes bejegyzes = new Bejegyzes(szerzo,tartalom);
-                bejegyzesekBekert.Add(bejegyzes);
+                bejegyzesek.Add(bejegyzes);
             }
         }
 
-        static void BejegyzesekBekertKiiratas()
-        {
-            foreach (var item in bejegyzesekBekert)
-            {
-                Console.WriteLine(item.ToString());
-            }
-        }
 
         static void BeolvasottListaFeltoltese()
         {
@@ -67,14 +58,14 @@ namespace BejegyzesProjekt
                 string sor = sr.ReadLine();
                 string[] darabok = sor.Split(';');
                 Bejegyzes bejegyzes = new Bejegyzes(darabok[0], darabok[1]);
-                bejegyzesekBeolvasas.Add(bejegyzes);
+                bejegyzesek.Add(bejegyzes);
             }
             sr.Close();
         }
 
-        static void BejegyzesekBeolvasottKiiratas()
+        static void BejegyzesekKiiratas()
         {
-            foreach (var item in bejegyzesekBeolvasas)
+            foreach (var item in bejegyzesek)
             {
                 Console.WriteLine(item);
             }
@@ -83,16 +74,10 @@ namespace BejegyzesProjekt
         static void LikeokKiosztasa()
         {
             Random rand = new Random();
-            for (int i = 0; i < bejegyzesekBekert.Count*20; i++)
+            for (int i = 0; i < bejegyzesek.Count*20; i++)
             {
-                int randomNumber = rand.Next(0,bejegyzesekBekert.Count);
-                bejegyzesekBekert[randomNumber].Like();
-            }
-
-            for (int i = 0; i < bejegyzesekBeolvasas.Count * 20; i++)
-            {
-                int randomNumber = rand.Next(0, bejegyzesekBeolvasas.Count);
-                bejegyzesekBeolvasas[randomNumber].Like();
+                int randomNumber = rand.Next(0,bejegyzesek.Count);
+                bejegyzesek[randomNumber].Like();
             }
         }
 
@@ -100,20 +85,28 @@ namespace BejegyzesProjekt
         {
             Console.Write("Adjon meg egy szöveget!: ");
             string szoveg = Console.ReadLine();
-            bejegyzesekBeolvasas[1].SetTartalom(szoveg);
+            bejegyzesek[1].SetTartalom(szoveg);
         }
 
         static void LegnepszerubbBejegyzes()
         {
-            int max = bejegyzesekBeolvasas[0].Likeok;
-            for (int i = 1; i < bejegyzesekBeolvasas.Count; i++)
+            int max = bejegyzesek[0].Likeok;
+            for (int i = 1; i < bejegyzesek.Count; i++)
             {
-                if (bejegyzesekBeolvasas[i].Likeok > max)
+                if (bejegyzesek[i].Likeok > max)
                 {
-                    max = bejegyzesekBeolvasas[i].Likeok;
+                    max = bejegyzesek[i].Likeok;
                 }
             }
             Console.WriteLine($"A legnépszerűbb bejegyzésen {max} darab like van.");
         }
+
+        //static void TobbLikeMint35()
+        //{
+        //    for (int i = 0; i < 10; i++)
+        //    {
+
+        //    }
+        //}
     }
 }
