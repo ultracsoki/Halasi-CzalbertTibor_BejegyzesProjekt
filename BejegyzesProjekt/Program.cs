@@ -23,6 +23,7 @@ namespace BejegyzesProjekt
             Console.WriteLine("\n---------------------------------------------\n");
             LegnepszerubbBejegyzes();
             TobbLikeMint35();
+            KevesebbMint15();
 
             Console.ReadKey();
         }
@@ -123,9 +124,19 @@ namespace BejegyzesProjekt
             }
         }
 
-        //static void KevesebbMint15()
-        //{
+        static void KevesebbMint15()
+        {
+            int szamlalo = 0;
+            for (int i = 0; i < bejegyzesek.Count; i++)
+            {
+                if (bejegyzesek[i].Likeok < 15)
+                {
+                    szamlalo++;
+                }
+            }
+            Console.WriteLine($"{szamlalo} darab 15-nél kevesebb likeot kapott bejegyzés van.");
+        }
 
-        //}
+
     }
 }
